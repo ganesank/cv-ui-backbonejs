@@ -1,0 +1,257 @@
+<div class="container-lg clearfix">
+  <% if(data.type === "hero") { %>
+  <div class="col-sm-12 col-md-3 col-lg-2 float-left p-2"></div>
+  <div class="col-sm-12 col-md-9 col-lg-10 float-left p-2">
+    <div class="blankslate">
+      <h3 class="mb-1"><%= data.title%></h3>
+      <h4 class="mb-1"><%= data.subtitle%></h4>
+      <p> <%= data.desc%> </p>
+    </div>
+  </div>
+
+  <% } else { %>
+
+  <div class="col-sm-12 col-md-3 col-lg-2 float-left p-2">
+    <div class="Subhead">
+      <div class="Subhead-heading"><%= data.title%></div>
+      <div class="Subhead-description"><%= data.subtitle%></div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-9 col-lg-10 float-left p-2">
+    <% if(data.type === "links") { %>
+
+    <div class="container-lg clearfix">
+      <% _.each(data.content, function(bd) { %>
+      <div class="col-sm-12 col-md-3 p-2 float-left">
+        <div class="Box">
+          <div class="Box-row clearfix">
+            <i class="<%= bd.icon %> float-left"> </i>
+            <div class="overflow-hidden pl-3 float-left">
+              <h4 class="text-normal lh-condensed"><%= bd.title %></h4>
+              <a class="text-gray text-small" target="_blank" href="<%= bd.link %>"><%= bd.subtitle %></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+    <% } else if(data.type === "expertise") { %>
+
+    <div class="container-lg clearfix">
+      <div class="col-sm-12 p-2">
+        <div class="Box">
+          <div class="Box-body">
+            <% _.each(data.content, function(bd) { %>
+
+            <h5 class="text-gray mb-2 pb-1 border-bottom"><%= bd.title%></h5>
+            <nav class="SideNav">
+              <% _.each(bd.content, function(bda) { %>
+              <p class="SideNav-subItem pl-2">
+                <h5><%= bda.title%> </h5>
+                <% _.each(bda.content, function(bdal) { %>
+                <span class="Label bg-blue"><%= bdal.title%></span>
+
+                <% }); %>
+              </p>
+              <% }); %>
+            </nav>
+            <% }); %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% } else if(data.type === "progress") { %>
+
+    <div class="container-lg clearfix">
+      <div class="col-sm-12 p-2">
+        <div class="Box">
+          <div class="Box-body">
+            <div class="container-lg clearfix">
+              <% _.each(data.content, function(bd) { %>
+              <div class="col-sm-12 col-md-6 col-lg-4 p-2 float-left">
+                <h5><%= bd.title%>
+                  <span class="Counter bg-gray-2 float-right"><%= bd.percentage %> </span></h5>
+
+                <span class="Progress Progress--small clearfix mt-1">
+                  <span class="bg-green" style="width: <%= bd.percentage %>%;"></span>
+                </span>
+              </div>
+              <% }); %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% } else if(data.type === "education") { %>
+
+    <div class="container-lg clearfix">
+      <div class="col-sm-12 p-2">
+
+        <div class="Box">
+          <div class="Box-body">
+            <% _.each(data.content, function(bd) { %>
+            <div class="TimelineItem">
+              <div class="TimelineItem-badge text-white">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <div class="TimelineItem-body">
+
+                <div class="Subhead">
+                  <div class="Subhead-heading"><%= bd.title%></div>
+                  <div class="Subhead-actions"> <%= bd.startdate%> - <%= bd.enddate%></div>
+                  <div class="Subhead-description"> <a class="text-gray " target="_blank"
+                      href="<%= bd.link %>"><%= bd.institute %></a> - <%= bd.location %>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+            <% }); %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% } else if(data.type === "projects") { %>
+
+    <div class="container-lg clearfix">
+      <div class="col-sm-12 p-2">
+
+        <div class="Box">
+          <div class="Box-body">
+
+            <% _.each(data.content, function(bd) { %>
+
+            <div class="col-12  width-full py-4 border-bottom public source">
+              <div class="d-inline-block mb-1">
+                <h3 class="wb-break-all"> <a> <%= bd.title%></a> </h3>
+                <span class="f6 text-gray mb-1">
+                  <a class="text-gray " target="_blank">
+                    <%= bd.client %></a>
+                  <%= bd.location %>
+                </span>
+              </div>
+              <div>
+                <p class="d-inline-block text-gray mb-2 pr-4">
+                  <%= bd.desc%>
+                </p>
+              </div>
+              <div class="f6 text-gray mt-2">
+                <span class="ml-0 mr-3">
+                  <i class="fas fa-cog"></i> <%= bd.size%>
+                  <span class="repo-language-color"></span>
+                  <span itemprop="programmingLanguage">JavaScript</span>
+                </span>
+
+                <span class="mr-3">
+                  <i class="fas fa-users"></i> <%= bd.size%>
+                </span>
+
+                <span class="mr-3">
+                  <i class="fas fa-calendar"></i> <%= bd.startdate%> - <%= bd.enddate%>
+                </span>
+              </div>
+            </div>
+            <% }); %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% } else if(data.type === "awards") { %>
+
+    <div class="container-lg clearfix">
+      <div class="col-sm-12 p-2">
+
+        <div class="Box">
+          <div class="Box-body">
+            <% _.each(data.content, function(bd) { %>
+            <div class="TimelineItem">
+              <div class="TimelineItem-badge text-white">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <div class="TimelineItem-body">
+
+                <div class="Subhead">
+                  <div class="Subhead-heading"><%= bd.title%></div>
+                  <div class="Subhead-actions"> <%= bd.startdate%> - <%= bd.enddate%></div>
+                  <div class="Subhead-description"> <a class="text-gray " target="_blank"
+                      href="<%= bd.link %>"><%= bd.institute %></a> - <%= bd.location %>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+            <% }); %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% } else if(data.type === "otherprojects") { %>
+
+    <div class="container-lg clearfix">
+      <div class="col-sm-12 p-2">
+
+        <div class="Box  Box--condensed">
+          <div class="Box-body">
+          </div>
+          <ul></ul>
+          <% _.each(data.content, function(bd) { %>
+
+          <li class="Box-row">
+             <a class="Box-row-link " target="_blank"
+                      href="<%= bd.link %>">  <%= bd.title%></a>
+         
+          </li>
+
+          <% }); %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <% } else if(data.type === "experience") { %>
+    <div class="container-lg clearfix">
+      <div class="col-sm-12 ">
+
+        <div class="container-lg clearfix">
+          <% _.each(data.content, function(bd) { %>
+          <div class="col-sm-12 col-md-12 col-lg-12 p-2 float-left">
+            <div class="Box Box--condensed Box--blue">
+              <div class="Box-header">
+                <div class="Subhead">
+                  <div class="Subhead-heading"><%= bd.title%></div>
+                  <div class="Subhead-actions"> <%= bd.startdate%> - <%= bd.enddate%></div>
+                  <div class="Subhead-description"> <a class="text-gray " target="_blank"
+                      href="<%= bd.link %>"><%= bd.company %></a> - <%= bd.location %>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="Box-body">
+                <%= bd.desc%>
+
+                <ul class="p-3">
+                  <% _.each(bd.content, function(bda) { %>
+                  <li> <%= bda.title %> </li> <% }); %>
+                </ul>
+              </div>
+
+
+            </div>
+          </div>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+
+  <% } %>
+</div>

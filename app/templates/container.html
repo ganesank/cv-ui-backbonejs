@@ -1,0 +1,27 @@
+<div class="Header">
+  <div class="Header-item">
+    <a href="#" class="Header-link f4 d-flex flex-items-center">
+      <span> Ganesan Karuppaiya </span>
+    </a>
+  </div>
+
+  <div class="Header-item Header-item--full"></div>
+  <div class="Header-item mr-0">
+    <div class="d-flex flex-justify-end">
+      <details class="dropdown details-reset details-overlay d-inline-block">
+        <summary class="btn" aria-haspopup="true">
+          Menu
+          <div class="dropdown-caret"></div>
+        </summary>
+        <% if(this.menu) { %>
+        <ul class="dropdown-menu dropdown-menu-sw">
+          <% _.each(this.menu, function(bd) { %>
+          <li><a class="dropdown-item" href="#url"><%= bd.title %></a></li>
+          <% }); %>
+        </ul>
+        <% } %>
+      </details>
+    </div>
+  </div>
+</div>
+<div id="sections"></div>
