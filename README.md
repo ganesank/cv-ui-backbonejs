@@ -51,4 +51,4 @@ Application roadmap on enhancement
 
 ## Demo
 
-[Running App](https://ganesan-cv-ui-riot.netlify.app/)
+[Running App](https://ganesan-cv-ui-backbonejs.netlify.app/)
